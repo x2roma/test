@@ -1,6 +1,6 @@
 const http = require('http');
-var server_port = process.env.OPENSHIFT_NODEJS_PORT || 8080
-var server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1'
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+var ip   = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
 const server = http.createServer(function (request, response) {
    // Send the HTTP header
    // HTTP Status: 200 : OK
@@ -10,6 +10,6 @@ const server = http.createServer(function (request, response) {
    // Send the response body as "Hello World"
    response.end('Hello World\n');
 });
-server.listen(server_port, server_ip_address, function () {
-  console.log( "Listening on " + server_ip_address + ", port " + server_port )
+server.listen(port, ip, function () {
+  console.log( "Listening on " + ip + ", port " + port )
 });
